@@ -32,6 +32,30 @@ public class ExplorerSearch {
         // Implement your method here!
         // Please also make more test cases
         // I STRONGLY RECOMMEND testing some helpers you might make too
-        return -1;
+
+        // tracking the starter using a helper function
+        int[] start = explorerLocation(island);
+
+    }
+
+
+
+    /**
+     * 
+     * @param island int[][] parameter for matrix
+     * @return the int [row][column] representing the location of the explorer in the value of 0
+     * @throws IllegalArgumentException if the explorer isn't found
+     */
+
+    public static int[] explorerLocation(int[][] island) {
+        for(int row = 0; row < island.length; row++){ // loop rows
+            for(int column = 0; column < island[row].length; column++){ // loop columns by using row length
+                if(island[row][column] == 0){
+                    return new int[] {row,column};
+                }
+            }
+        }
+
+        throw new IllegalArgumentException("Explorer not found or doesn't exist.");
     }
 }
