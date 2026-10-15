@@ -72,7 +72,43 @@ public class ExplorerSearch {
 
     }
 
+    public static List<int[]> possibleMoves(int[][] island, int[] current) {
+        int curX = current[0];
+        int curY = current[1];
 
+        int newX, newY;
+        List<int[]> possible = new ArrayList<>();
+
+        // up
+        newX = curX - 1;
+        newY = curY;
+        if(newX >= 0 && island[newX][newY] == 1){
+            possible.add(new int[]{newX, newY});
+        }
+
+        // down
+        newX = curX + 1;
+        newY = curY;
+        if(newX < island.length && island[newX][newY] == 1){
+            possible.add(new int[]{newX, newY});
+        }
+
+        // left
+        newX = curX;
+        newY = curY - 1;
+        if(newY >= 0 && island[newX][newY] == 1){
+            possible.add(new int[]{newX, newY});
+        }
+
+        // right
+        newX = curX;
+        newY = curY + 1;
+        if(newX < island.length && island[newX][newY] == 1){
+            possible.add(new int[]{newX, newY});
+        }
+
+        return possible;
+    }
 
     /**
      * 
