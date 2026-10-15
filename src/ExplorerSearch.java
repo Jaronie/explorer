@@ -39,6 +39,40 @@ public class ExplorerSearch {
     }
 
 
+    /**
+     * This method checks for reachable areas. [rows][columns]
+     * 
+     * @param island int[][] parameter for matrix
+     * @param visited the boolean[][] variables for [x][y] that have been visited in this method
+     * @param current the current [x][y] for traversal purposes
+     * @return
+     */
+    public static int reachableArea(int[][] island, boolean[][] visited, int[] current){
+        /*
+        Assign the curX and curY values
+         */
+        int curX = current[0];
+        int curY = current[1];
+        
+        //check if the current has been visited
+        if(visited[curX][curY]) return 0;
+
+        visited[curX][curY] = true;
+
+        List<int[]> neighbors = possibleMoves(island, current);
+
+        //initialize sum, starts at 1 to indicate the starting location as a "move"
+        int sum = 1;
+
+        // loop neighbors
+        for(int[] neighbor : neighbors) {
+                sum += reachableArea(island,visited,neighbor);
+        }
+        return sum;
+
+    }
+
+
 
     /**
      * 
