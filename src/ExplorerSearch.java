@@ -35,6 +35,8 @@ public class ExplorerSearch {
 
         // tracking the starter using a helper function
         int[] start = explorerLocation(island);
+        boolean[][] visited = visited = new boolean[island.length][island[0].length];
+        return reachableArea(island, visited, start);
 
     }
 
@@ -103,7 +105,7 @@ public class ExplorerSearch {
         // right
         newX = curX;
         newY = curY + 1;
-        if(newX < island.length && island[newX][newY] == 1){
+        if(newY < island[curX].length && island[newX][newY] == 1){
             possible.add(new int[]{newX, newY});
         }
 
